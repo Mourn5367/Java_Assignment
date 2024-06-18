@@ -1,7 +1,6 @@
 public class Drink
 {
     private final DrinkType type;
-    //private final String name;
     private int stock;
     public Drink(DrinkType type, int stock)
     {
@@ -24,6 +23,10 @@ public class Drink
     public String GetName()
     {
         return this.type.GetName();
+    }
+    public int GetSize()
+    {
+        return this.type.GetSize();
     }
     public void SellDrink(int number)
     {

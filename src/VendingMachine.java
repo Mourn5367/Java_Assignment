@@ -3,17 +3,13 @@ import java.util.List;
 
 public class VendingMachine
 {
-    private int money = 0;
-
     List<Drink> drinks;
-
-
     public VendingMachine()
     {
-        drinks = new ArrayList<Drink>();
-        drinks.add(new Drink(DrinkType.WATER,10));
-        drinks.add(new Drink(DrinkType.COLA,10));
-        drinks.add(new Drink(DrinkType.CIDER,10));
+        drinks = new ArrayList<>();
+        drinks.add(new Drink(DrinkType.WATER,3));
+        drinks.add(new Drink(DrinkType.COLA,3));
+        drinks.add(new Drink(DrinkType.CIDER,3));
     }
     public int GetMinPrice()
     {
@@ -31,8 +27,8 @@ public class VendingMachine
     {
         for (int i = 0 ; i < drinks.size(); i++)
         {
-            System.out.printf("%d.\t%s\t%d원\t현재 재고 %d\n",i+1,
-                    drinks.get(i).GetName(),drinks.get(i).GetPrice(),drinks.get(i).GetStock());
+            System.out.printf("%d.\t%s\t%dml\t%d원\t현재 재고 %d\n",i+1,
+                    drinks.get(i).GetName(),drinks.get(i).GetSize(), drinks.get(i).GetPrice(),drinks.get(i).GetStock());
         }
         System.out.println("4. \t구입 종료.");
     }
@@ -70,9 +66,7 @@ public class VendingMachine
 
         if((wallet>=drink.GetPrice()) & drink.GetStock() > 0)
         {
-//            user.SetWallet(drink.GetPrice());
             drink.SellDrink(1);
-//            user.PlusDrink(drink);
             System.out.printf("%s를 구입하였습니다.\n",drink.GetName());
             return drink;
         }
@@ -92,11 +86,6 @@ public class VendingMachine
             return null;
         }
     }
-
-    public Drink test()
-    {
-        return drinks.get(0);
-    }
     public void AlertMenuSize()
     {
         System.out.printf("1 ~ %d 까지 입력해 주세요\n",drinks.size()+1);
@@ -108,5 +97,16 @@ public class VendingMachine
     public int GetDrinkListSize()
     {
         return drinks.size();
+    }
+    public boolean CheckStock()
+    {
+        for(Drink d : drinks)
+        {
+            if (d.GetStock()> 0)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

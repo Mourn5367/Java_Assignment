@@ -1,19 +1,17 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
-//import java.util.Comparator;
 
 public class User
 {
     private int wallet;
     List<Drink> drinkList;
     Scanner sc;
-    private Drink drink;
 
     public User()
     {
         sc = new Scanner(System.in);
-        wallet = 3000;
+        wallet = 10000;
         drinkList = new ArrayList<>();
     }
     public int GetWallet()
@@ -45,8 +43,8 @@ public class User
         }
         if(drinkList.isEmpty() || first)
         {
-            this.drink = new Drink(drink.GetType(), 1);
-            drinkList.add(this.drink);
+            drink = new Drink(drink.GetType(), 1);
+            drinkList.add(drink);
         }
 //        if(drinkList.contains(drink))
 //        {
@@ -92,13 +90,12 @@ public class User
         int selectChoice = 0;
             try
             {
-                System.out.println("1. 장바구니 보기\t2. 계속 진행");
+                System.out.println("1. 장바구니 보기\t2. 계속 구입\t3. 구입 종료");
                 selectChoice = sc.nextInt();
             }
             catch(Exception e)
             {
                 sc.nextLine();
-//                System.out.println("잘못된 입력을 하였습니다.");
             }
         return selectChoice;
     }
@@ -108,13 +105,12 @@ public class User
         int selectChoice = 0;
             try
             {
-                System.out.println("1. 계속 구입\t2. 그만 두기");
+                System.out.println("1. 계속 구입\t2. 구입 종료");
                 selectChoice = sc.nextInt();
             }
             catch(Exception e)
             {
                 sc.nextLine();
-//                System.out.println("잘못된 입력을 하였습니다.");
             }
         return selectChoice;
     }

@@ -1,25 +1,18 @@
 public enum DrinkType
 {
-    WATER( 0,"Water",700, 500),
-    COLA(1,"Cola", 1000, 355 ),
-    CIDER(2,"Cider", 1500, 500 ),;
+    WATER( "Water",700, 500),
+    COLA("Cola", 1000, 355 ),
+    CIDER("Cider", 1500, 500 ),;
 
-    private int num;
-    private String name;
-    private int price;
-    private int size;
+    private final String name;
+    private final int price;
+    private final int size;
 
-    DrinkType(int num, String name, int price, int size)
+    DrinkType(String name, int price, int size)
     {
-        this.num = num;
         this.name = name;
         this.price = price;
         this.size = size;
-    }
-
-    public int GetNum()
-    {
-        return num;
     }
 
     public String GetName()

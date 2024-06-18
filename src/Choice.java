@@ -1,6 +1,8 @@
 public enum Choice {
-    YES(1),
-    NO(2),
+    YES_1(1),
+    YES_2(2),
+    YES_3(3),
+    NO(4),
     ERROR(-1);
 
     private final int choiceNum;
@@ -13,12 +15,24 @@ public enum Choice {
         return choiceNum;
     }
 
-    public static Choice fromInt(int choiceNum) {
-        for (Choice choice : Choice.values()) {
+    public static Choice fromInt(int choiceNum,int limitYesNum)
+    {
+        int count = 0;
+        if(choiceNum == limitYesNum+1)
+        {
+            return NO;
+        }
+        for (Choice choice : Choice.values())
+        {
+            if (count == limitYesNum)
+            {
+                break;
+            }
             if (choice.getChoiceNum() == choiceNum) {
                 return choice;
             }
+            count++;
         }
-        return ERROR; // 또는 원하는 기본 값을 반환
+        return ERROR;
     }
 }

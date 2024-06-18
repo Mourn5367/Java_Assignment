@@ -18,6 +18,12 @@ public class Main
                 case START:
                     System.out.println("자판기 가동");
                 case SHOWMENU:
+                    if (!vm.CheckStock())
+                    {
+                        currentState = VMState.RESULT;
+                        System.out.println("재고가 없어 구입이 종료됩니다.");
+                        continue;
+                    }
                     user.ShowWallet();
                     vm.ShowMenu();
                     currentState = VMState.SELECTMENUUSER;
@@ -53,14 +59,17 @@ public class Main
                     break;
                 case SELECTSHOWDRINKLIST:
                     showDrinkList = user.SuggestShowDrinkList();
-                    choice = Choice.fromInt(showDrinkList);
+                    choice = Choice.fromInt(showDrinkList,2);
                     switch(choice)
                     {
-                        case YES:
+                        case YES_1:
                             currentState = VMState.SHOWDRINK;
                             break;
+                        case YES_2:
+                            currentState = VMState.SHOWMENU;
+                            break;
                         case NO:
-                            currentState = VMState.PURCHASEDONE;
+                            currentState = VMState.RESULT;
                             break;
                         case ERROR:
                             vm.ExactChoose();
@@ -72,10 +81,10 @@ public class Main
                     currentState = VMState.PURCHASEDONE;
                 break;
                 case PURCHASEDONE:
-                    choice = Choice.fromInt(user.SustainPurchase());
+                    choice = Choice.fromInt(user.SustainPurchase(),1);
                     switch(choice)
                     {
-                        case YES:
+                        case YES_1:
                             currentState = VMState.SHOWMENU;
                             break;
                         case NO:
