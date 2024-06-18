@@ -58,6 +58,7 @@ public class Main
                     currentState = VMState.SELECTSHOWDRINKLIST;
                     break;
                 case SELECTSHOWDRINKLIST:
+                    // 숫자 이외의 입력은 user.SuggestShowDrinkList() 여기서 검사함.
                     showDrinkList = user.SuggestShowDrinkList();
                     choice = Choice.fromInt(showDrinkList,2);
                     switch(choice)
@@ -81,6 +82,7 @@ public class Main
                     currentState = VMState.PURCHASEDONE;
                 break;
                 case PURCHASEDONE:
+                    // 숫자 이외의 입력은 user.SustainPurchase() 여기서 검사함.
                     choice = Choice.fromInt(user.SustainPurchase(),1);
                     switch(choice)
                     {

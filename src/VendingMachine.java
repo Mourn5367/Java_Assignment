@@ -38,6 +38,8 @@ public class VendingMachine
         if (selectMenu == -1)
         {
             return -1;
+            //DrinkCondition 함수에 값이 넘어가고
+            //-1 값을 받을 경우 Drink객체를 NULL 반환한다.
         }
         DrinkType drinkType = drinks.get(selectMenu-1).GetType();
 
@@ -61,6 +63,7 @@ public class VendingMachine
         if (selectMenu == -1)
         {
             return null;
+            // 이 NULL 값은 User의 DrinkPlus 함수로 넘어간다.
         }
         Drink drink = drinks.get(selectMenu);
 

@@ -26,6 +26,12 @@ public class User
     {
         wallet -= price;
     }
+
+    // 잘못된 입력을 하여 음료수에서 나온 drink 객체가 NULL이 아닌 경우 함수가 진행.
+    // 사용자 User가 가지고 있는 drinkList중에 자판기에서 건네받은 drinkType과 지금
+    // 소유하고있는 음료수 중의 drinkType이 일치하다면 처음 사지 않았다는 first 지역변수 값을
+    // false로 변경하고 가지고 있는 drink객체의 stock 속성을 1 올려주는 StockPlus 함수를 실행한다.
+    // 만약 drinkList가 비었고 first 값이 true일때는 drinkList에 새로 추가한다.
     public void PlusDrink(Drink drink)
     {
         if (drink == null)
@@ -63,8 +69,8 @@ public class User
     }
     public int SelectDrink(VendingMachine vm)
     {
-        int selectMenu = -1;
-        
+        int selectMenu = 0;
+
         try
         {
             vm.AlertMenuSize();
@@ -78,6 +84,8 @@ public class User
         {
             vm.ExactChoose();
             return -1;
+            //이 값이 VendingMachine의 SelectDrinkPrint 함수로 넘어간다.
+            // -1 이면 drink객체를 NULL을 반환하기로 함
         }
         else
         {
